@@ -30,14 +30,14 @@ public:
     std::cout << std::endl;
   }
   node<T> *&get_head() { return head; }
-  // ~cList() {
-  //     node<T>* p = head;
-  //     while (p) {
-  //         node<T>* tmp = p;
-  //         p=p->siguiente;
-  //         delete tmp;
-  //     }
-  // }
+  ~cList() {
+    node<T> *p = head;
+    while (p) {
+      node<T> *tmp = p;
+      p = p->siguiente;
+      delete tmp;
+    }
+  }
 };
 template <typename T> void merge_listas(node<T> *&h1, node<T> *&h2) {
   // node<T> *nueva_cabeza = (h1->valor > h2->valor) ? (h1) : h2;
