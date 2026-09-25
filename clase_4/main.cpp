@@ -92,7 +92,7 @@ int main() {
   std::cout << "--------Lista 2--------\n";
   l2.print();
 
-  std::cout << "--------Listas despues del merge--------\n";
+  std::cout << "\n--------Listas despues del merge--------\n\n";
   merge_listas(l1.get_head(), l2.get_head());
   std::cout << "--------Lista 1--------\n";
   l1.print();

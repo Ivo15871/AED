@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-std::vector<char> cambiar_postfija(std::string &palabra) {
+std::vector<char> cambiar_postfija(char *palabra) {
   auto signo_operacion = [](char x) -> bool {
     switch (x) {
     case '+':
@@ -24,28 +24,26 @@ std::vector<char> cambiar_postfija(std::string &palabra) {
       return 2;
     return 0;
   };
-
   std::queue<char> mCola;
   std::stack<char> mPila;
-
-  for (int i = 0; i < palabra.length(); i++) {
-    if (palabra[i] == '(') {
-      mPila.push(palabra[i]);
-    } else if (signo_operacion(palabra[i])) {
+  for (char *p = palabra; *p != '\0'; p++) {
+    if (*p == '(') {
+      mPila.push(*p);
+    } else if (signo_operacion(*p)) {
       while (!mPila.empty() && mPila.top() != '(' &&
-             precedencia(mPila.top()) >= precedencia(palabra[i])) {
+             precedencia(mPila.top()) >= precedencia(*p)) {
         mCola.push(mPila.top());
         mPila.pop();
       }
-      mPila.push(palabra[i]);
-    } else if (palabra[i] == ')') {
+      mPila.push(*p);
+    } else if (*p == ')') {
       while (mPila.top() != '(') {
         mCola.push(mPila.top());
         mPila.pop();
       }
       mPila.pop();
     } else {
-      mCola.push(palabra[i]);
+      mCola.push(*p);
     }
   }
 
@@ -102,8 +100,13 @@ int main() {
   std::string s1;
   std::cout << "escribe tu notacion infija: ";
   std::cin >> s1;
-
-  std::vector<char> post = cambiar_postfija(s1);
+  char notacion[100];
+  int i = 0;
+  for (; i < s1.length(); i++) {
+    *(notacion + i) = s1[i];
+  }
+  *(notacion + i) = '\0';
+  std::vector<char> post = cambiar_postfija(notacion);
 
   for (auto i : post) {
     std::cout << i;
