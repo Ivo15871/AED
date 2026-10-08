@@ -69,14 +69,6 @@ template <typename T> void merge_listas(node<T> *&h1, node<T> *&h2) {
     *p = h2_copia;
   }
 }
-template <typename T> void print_merge(node<T> *head) {
-  node<T> **p = &head;
-  while (*p) {
-    std::cout << (*p)->valor << "-->";
-    p = &(*p)->siguiente;
-  }
-  std::cout << std::endl;
-}
 int main() {
   cList<int> l1;
   l1.push_back(34);
