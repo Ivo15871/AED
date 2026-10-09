@@ -66,9 +66,16 @@ public:
   }
 };
 int main() {
-  cList<char> mL(6);
+  int n = 0, k = 0;
+  std::cout << "Escribe la cantidad de elemenos que deseas: ";
+  std::cin >> n;
+  std::cout << "Escribe cada 'k' quieres eliminar: ";
+  std::cin >> k;
+  cList<char> mL(n);
+  std::cout << "---Lista original---\n";
   mL.print_lista();
-  mL.kill(3);
+  std::cout << "---orden de elementos eliminados---\n";
+  mL.kill(k);
   mL.print_lista();
   return 0;
 }
