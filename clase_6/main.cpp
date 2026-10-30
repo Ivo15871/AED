@@ -41,8 +41,8 @@ public:
 	Node* getroot() { return root; }
 };
 int main() { 
-	const int n = 8;
-	int A[n] = { 1,3,8,4,5,7,15,21 };	
+	const int n = 16;
+	int A[n] = { 1,3,8,4,5,7,15,21,45,76,34,2,5,7,15,21 };
 	cTree tree;
 	tree.armar_suma(A, n);
 	dibujarTotal(tree.getroot());
